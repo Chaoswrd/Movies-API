@@ -1,5 +1,5 @@
 <h1 align="center">Movies-API</h1>
-<p align="center"> This project displays some of the possibilites with Java Spring Boot, Postgresql and Docker</p>
+<p align="center"> This project displays some of the possibilities of Java Spring Boot, Postgresql and Docker</p>
 
 <h2 align="left">Description</h2>
 <p align="left">
