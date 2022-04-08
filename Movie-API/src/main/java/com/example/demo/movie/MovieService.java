@@ -2,6 +2,7 @@ package com.example.demo.movie;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
@@ -20,9 +21,8 @@ public class MovieService {
 	}
 	
 	private Pageable formatPageable(int page, int elements, String sortName, String orderBy) {
-		if(orderBy != "asc" && orderBy != "desc") 
-			new IllegalStateException(String.format("Incorrect orderby, supply either asc or desc, you supplied %s", orderBy));
-		Sort sort = (orderBy == "desc") ? Sort.by(sortName).descending() : Sort.by(sortName).ascending();
+		if(!orderBy.equals("asc") && !orderBy.equals("desc")) throw new IllegalStateException(String.format("Incorrect orderby, supply either asc or desc, you supplied %s", orderBy));
+		Sort sort = (orderBy.equals("desc")) ? Sort.by(sortName).descending() : Sort.by(sortName).ascending();
 		return PageRequest.of(page, elements, sort);
 	}
 	
@@ -30,7 +30,7 @@ public class MovieService {
 		return this.movieRepository.findAll(pageable).getContent();
 	}
 	
-	public List<Movie> getMoviesById(List<Integer> ids, int page, int elements, String sortName, String orderBy) {
+	public List<Movie> getMoviesById(Set<Integer> ids, int page, int elements, String sortName, String orderBy) {
 		Pageable pageable = formatPageable(page, elements, sortName, orderBy);
 		if (ids == null || ids.isEmpty()) {
 			return getMovies(pageable);
@@ -41,7 +41,7 @@ public class MovieService {
 	
 	public Movie getMovieById(int id) {
 		Optional<Movie> movieOptional = this.movieRepository.findById((long) id);
-		if(!movieOptional.isPresent()) new IllegalStateException(String.format("There is no movie with supplied id: %s", id));
+		if(!movieOptional.isPresent()) throw new IllegalStateException(String.format("There is no movie with supplied id: %s", id));
 		return movieOptional.get();
 	}
 	

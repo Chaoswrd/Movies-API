@@ -32,6 +32,6 @@ build/
 ### VS Code ###
 .vscode/
 *.jar
-*.properties
+Movie-API/mvnw.cmd
 Movie-API/mvnw
-*.cmd
+Movie-API/.mvn/wrapper/maven-wrapper.properties
