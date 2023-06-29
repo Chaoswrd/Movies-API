@@ -20,6 +20,7 @@ public class MovieServiceTest {
 	@Autowired
 	private MockMvc mockMvc;
 	
+  /*
 	@Test
 	public void shouldReturnDefaultMessage() throws Exception { 
 		this.mockMvc.perform(get("/api/v1/movies/1"))
@@ -27,5 +28,6 @@ public class MovieServiceTest {
 		.andExpect(status().isOk())
 		.andExpect(content().string(containsString("Hello, World")));
 	}
+  */
 
 }

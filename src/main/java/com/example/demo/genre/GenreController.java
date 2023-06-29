@@ -20,7 +20,13 @@ public class GenreController {
 	}
 	
 	@GetMapping
-	public List<Genre> get(@RequestParam(required = false) List<Integer> id, @RequestParam(required = false, defaultValue="0") int page, @RequestParam(required = false, defaultValue="5") int elem, @RequestParam(required = false, defaultValue="id") String sortName, @RequestParam(required = false, defaultValue="asc") String orderBy) {
+	public List<Genre> get(
+    @RequestParam(required = false) List<Integer> id,
+    @RequestParam(required = false, defaultValue="0") int page,
+    @RequestParam(required = false, defaultValue="5") int elem,
+    @RequestParam(required = false, defaultValue="id") String sortName,
+    @RequestParam(required = false, defaultValue="asc") String orderBy
+  ) {
 		return this.service.getGenresById(id, page, elem, sortName, orderBy);
 	} 
 	
